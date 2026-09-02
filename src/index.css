@@ -1,0 +1,381 @@
+@import 'tailwindcss';
+
+/*
+ * Prototype theme tokens.
+ * Semantic roles stay stable while palette values remain intentionally fluid.
+ */
+:root {
+  --theme-surface: #e7dcc9;
+  --theme-foreground: #01204e;
+  --theme-primary: #f87523;
+  --theme-secondary: #653993;
+  --theme-tertiary: #1db7b9;
+  --theme-focus: #653993;
+}
+
+@theme inline {
+  --color-surface: var(--theme-surface);
+  --color-foreground: var(--theme-foreground);
+  --color-primary: var(--theme-primary);
+  --color-secondary: var(--theme-secondary);
+  --color-tertiary: var(--theme-tertiary);
+  --color-focus: var(--theme-focus);
+
+  --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, SFMono-Regular, monospace;
+  --font-display: 'Climate Crisis', 'Space Grotesk', sans-serif;
+  --font-psychedelic: 'Monoton', 'Climate Crisis', sans-serif;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    background: var(--theme-surface);
+    color: var(--theme-foreground);
+    font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    background: var(--theme-surface);
+  }
+
+  a,
+  button {
+    outline-offset: 4px;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--theme-focus);
+  }
+
+  ::selection {
+    background: var(--theme-primary);
+    color: var(--theme-foreground);
+  }
+}
+
+/*
+ * RESPONSIVE HERO TUNING POINTS
+ *
+ * XL and laptop intentionally use the SAME composition. These variables are
+ * the main dials to adjust if the relationship needs another pass:
+ *
+ *   --hero-inline-padding : outer horizontal breathing room
+ *   --hero-art-column     : width reserved for the SVG
+ *   --hero-art-overlap    : how far the artwork intrudes toward HARVEY
+ *   --hero-brian-size     : BRIAN scale
+ *   --hero-harvey-size    : HARVEY scale
+ *   --hero-statement-size : "I build ..." scale
+ */
+.hero-shell {
+  --hero-inline-padding: clamp(2rem, 3.2vw, 3rem);
+  --hero-art-column: clamp(21rem, 34vw, 29rem);
+  --hero-art-overlap: -4rem;
+  --hero-brian-size: clamp(5.4rem, 9.1vw, 8rem);
+  --hero-harvey-size: clamp(4.8rem, 8.1vw, 7.1rem);
+  --hero-statement-size: clamp(1.25rem, 1.9vw, 1.65rem);
+
+  min-height: calc(100svh - 4rem);
+  padding-inline: var(--hero-inline-padding);
+}
+
+.hero-stage {
+  min-height: calc(100svh - 9rem);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--hero-art-column);
+  grid-template-rows: minmax(0, 1fr) auto;
+  column-gap: clamp(0.75rem, 1.8vw, 2rem);
+  position: relative;
+  isolation: isolate;
+}
+
+.hero-main {
+  grid-column: 1;
+  grid-row: 1;
+  align-self: center;
+  min-width: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.hero-name {
+  line-height: 0.9;
+  letter-spacing: -0.055em;
+  margin: 0;
+}
+
+.hero-name-brian {
+  font-family: 'Climate Crisis', 'Space Grotesk', sans-serif;
+  font-variation-settings: 'YEAR' 1979;
+  font-size: var(--hero-brian-size);
+  font-weight: 400;
+  letter-spacing: -0.04em;
+}
+
+.hero-name-harvey {
+  position: relative;
+  z-index: 2;
+  margin-left: clamp(0.75rem, 3.5vw, 3.9rem);
+  font-family: 'Monoton', 'Climate Crisis', sans-serif;
+  font-size: var(--hero-harvey-size);
+  font-weight: 400;
+}
+
+.hero-statement {
+  margin: clamp(1.1rem, 2vh, 1.7rem) 0 0;
+  font-size: var(--hero-statement-size);
+  max-width: 22ch;
+}
+
+/*
+ * ARTWORK REGION
+ * The negative margin is the controlled desktop/laptop overlap. The SVG and
+ * role stack share this containing block, so the role always stays inside the
+ * orange field as the whole composition scales.
+ */
+.hero-composition {
+  grid-column: 2;
+  grid-row: 1 / -1;
+  min-width: 0;
+  min-height: 390px;
+  margin-left: var(--hero-art-overlap);
+  overflow: visible;
+  position: relative;
+  z-index: 0;
+  container-type: inline-size;
+}
+
+.hero-arc-art {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  max-width: none;
+}
+
+/*
+ * ROLE STACK
+ * Sized against the artwork container (cqw), not the viewport. This is what
+ * keeps Software Engineer / Recordist / Musician visually attached to orange.
+ */
+.hero-role {
+  position: absolute;
+  top: clamp(0.45rem, 1.8cqw, 0.8rem);
+  right: clamp(0.55rem, 2cqw, 0.9rem);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 0;
+  color: var(--theme-foreground);
+  font-size: clamp(0.58rem, 2.05cqw, 0.72rem);
+  line-height: 1.22;
+  white-space: nowrap;
+}
+
+.hero-bottom {
+  grid-column: 1;
+  grid-row: 2;
+  align-self: end;
+  position: relative;
+  z-index: 2;
+  padding-bottom: 0.25rem;
+}
+
+.hero-links {
+  margin-bottom: clamp(2.1rem, 4.5vh, 4.25rem);
+  flex-wrap: wrap;
+}
+
+.hero-location {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.7rem;
+}
+
+.hero-location::before {
+  content: '';
+  display: block;
+  width: 2rem;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+.link-accent {
+  text-decoration-thickness: 2px;
+}
+
+.typewrap {
+  display: inline-grid;
+}
+
+.reserve,
+.typed {
+  grid-area: 1 / 1;
+}
+
+.reserve {
+  visibility: hidden;
+}
+
+@keyframes caret-blink {
+  0%,
+  45% {
+    opacity: 1;
+  }
+  46%,
+  100% {
+    opacity: 0;
+  }
+}
+
+.typing-caret {
+  display: inline-block;
+  width: 0.08em;
+  height: 0.9em;
+  margin-left: 0.08em;
+  translate: 0 0.08em;
+  background: currentColor;
+  animation: caret-blink 0.9s steps(1, end) infinite;
+}
+
+/*
+ * XL / LARGE DESKTOP
+ */
+@media (min-width: 1441px) {
+  .hero-shell {
+    --hero-inline-padding: 3rem;
+    --hero-art-column: clamp(28rem, 35vw, 34rem);
+    --hero-art-overlap: -4.25rem;
+    --hero-brian-size: clamp(7rem, 10.8vw, 10.65rem);
+    --hero-harvey-size: clamp(6.25rem, 9.5vw, 9.55rem);
+    --hero-statement-size: clamp(1.4rem, 2.15vw, 2.25rem);
+  }
+
+  .hero-stage {
+    column-gap: clamp(1.5rem, 3vw, 4rem);
+  }
+
+  .hero-name-harvey {
+    margin-left: clamp(1rem, 4.6vw, 4.75rem);
+  }
+}
+
+/*
+ * MD LAPTOP/ MACBOOK
+ */
+@media (min-width: 768px) and (max-width: 1440px) {
+  .hero-shell {
+    --hero-inline-padding: clamp(1.75rem, 2.8vw, 2.5rem);
+    --hero-art-column: clamp(21rem, 34vw, 28rem);
+    --hero-art-overlap: clamp(-2.25rem, -1.7vw, -1.25rem);
+    --hero-brian-size: clamp(5.25rem, 9.1vw, 7.9rem);
+    --hero-harvey-size: clamp(4.65rem, 8.05vw, 7rem);
+    --hero-statement-size: clamp(1.2rem, 1.9vw, 1.65rem);
+  }
+
+  .hero-stage {
+    column-gap: clamp(0.5rem, 1.4vw, 1.5rem);
+  }
+
+  .hero-name-harvey {
+    margin-left: clamp(0.65rem, 3.2vw, 2.75rem);
+  }
+}
+
+/* Mobile: this is the point where the hero genuinely recomposes. */
+@media (max-width: 767px) {
+  .hero-shell {
+    --hero-inline-padding: 1.25rem;
+    min-height: calc(100svh - 4rem);
+  }
+
+  .hero-stage {
+    min-height: calc(100svh - 7rem);
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: auto minmax(13rem, 1fr) auto;
+    gap: 1.5rem;
+  }
+
+  .hero-main {
+    grid-column: 1;
+    grid-row: 1;
+    align-self: start;
+  }
+
+  .hero-name {
+    line-height: 0.8;
+    max-width: 96%;
+  }
+
+  .hero-name-brian {
+    font-size: clamp(4.35rem, 19.5vw, 6.7rem);
+  }
+
+  .hero-name-harvey {
+    margin-left: clamp(0.5rem, 4vw, 1.75rem);
+    font-size: clamp(3.95rem, 17vw, 5.8rem);
+  }
+
+  .hero-statement {
+    margin-top: 1.2rem;
+    max-width: 18ch;
+    font-size: clamp(1.2rem, 5vw, 1.65rem);
+  }
+
+  .hero-composition {
+    grid-column: 1;
+    grid-row: 2;
+    overflow: hidden;
+    min-height: 13rem;
+    margin-left: 0;
+    margin-inline: calc(var(--hero-inline-padding) * -1);
+  }
+
+  .hero-arc-art {
+    inset: -10% -18% -8% auto;
+    width: 100vw;
+    height: 125%;
+  }
+
+  .hero-role {
+    top: 0.65rem;
+    right: max(1.25rem, 6vw);
+    font-size: clamp(0.56rem, 2.6vw, 0.68rem);
+  }
+
+  .hero-bottom {
+    grid-column: 1;
+    grid-row: 3;
+    padding-bottom: 0;
+  }
+
+  .hero-links {
+    margin-bottom: 1.75rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .typing-caret {
+    display: none;
+  }
+}
