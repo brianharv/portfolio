@@ -42,13 +42,13 @@ export function HomePage() {
           <div className='hero-bottom'>
             <div className='hero-links flex gap-5 font-mono text-[0.72rem] font-bold tracking-[0.1em] uppercase'>
               <a
-                href={import.meta.env.GITHUB_URL}
+                href={import.meta.env.VITE_GITHUB_URL}
                 className='link-accent border-b-2 border-transparent pb-1 transition-colors duration-150 hover:border-primary'
               >
                 GitHub ↗
               </a>
               <a
-                href={import.meta.env.LINKEDIN_URL}
+                href={import.meta.env.VITE_LINKEDIN_URL}
                 className='link-accent border-b-2 border-transparent pb-1 transition-colors duration-150 hover:border-secondary'
               >
                 LinkedIn ↗
