@@ -42,13 +42,13 @@ export function HomePage() {
           <div className='hero-bottom'>
             <div className='hero-links flex gap-5 font-mono text-[0.72rem] font-bold tracking-[0.1em] uppercase'>
               <a
-                href='https://github.com'
+                href={import.meta.env.GITHUB_URL}
                 className='link-accent border-b-2 border-transparent pb-1 transition-colors duration-150 hover:border-primary'
               >
                 GitHub ↗
               </a>
               <a
-                href='https://www.linkedin.com'
+                href={import.meta.env.LINKEDIN_URL}
                 className='link-accent border-b-2 border-transparent pb-1 transition-colors duration-150 hover:border-secondary'
               >
                 LinkedIn ↗
@@ -62,7 +62,8 @@ export function HomePage() {
         </div>
       </section>
 
-      <section
+      {/* HIDING FOR NOW */}
+      {/* <section
         className='min-h-[42svh] border-t-[3px] border-foreground bg-foreground text-surface'
         aria-label='Prototype continuation'
       >
@@ -75,7 +76,7 @@ export function HomePage() {
             01 / Visual System
           </span>
         </div>
-      </section>
+      </section> */}
     </main>
   );
 }
