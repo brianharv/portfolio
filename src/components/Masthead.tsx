@@ -3,8 +3,6 @@ import { NavLink } from 'react-router';
 
 const navItems = [
   { label: 'About', to: '/about' },
-  // Included in the visual prototype to test the anticipated full nav width.
-  // Production should conditionally expose this only when projects exist.
   { label: 'Projects', to: '/projects' },
   { label: 'Contact', to: '/contact' }
 ] as const;
