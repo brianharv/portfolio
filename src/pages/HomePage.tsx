@@ -1,30 +1,30 @@
 import { TypeCycle } from '../components/TypeCycle';
 
 const phrases = [
-  '[ superlative ] [ jargon ]',
-  'thoughtful interfaces.',
-  'accessible experiences.',
-  'useful software.'
+  'build accessible interfaces.',
+  'thrive in collaboration.',
+  'write scalable code.',
+  'develop useful software.',
+  'iterate and edify.'
 ] as const;
 
 export function HomePage() {
   return (
     <main>
-      <section className='hero-shell mx-auto max-w-[96rem] overflow-hidden pb-8 pt-8 sm:pb-10 sm:pt-10 lg:pb-12 lg:pt-10'>
+      <section className='hero-shell mx-auto xl:max-w-[82rem] 2xl:max-w-[95rem] overflow-hidden pb-8 sm:pb-0 sm:pt-0 lg:pb-12 lg:pt-10'>
         <div className='hero-stage'>
           <div className='hero-main'>
-            <h1 className='hero-name flex flex-col uppercase'>
+            <h1 className='hero-name m-0 flex flex-col uppercase leading-[0.9]'>
               <span className='hero-name-brian'>Brian</span>
               <span className='hero-name-harvey'>Harvey</span>
             </h1>
 
             <p className='hero-statement font-medium leading-[1.06] tracking-[-0.035em]'>
               <span className='sr-only'>
-                I build thoughtful interfaces, accessible experiences, and
-                useful software.
+                I develop accessible interfaces, thrive in collaboration, write
+                scalable code, build useful software, and iterate and edify.
               </span>
-              <span aria-hidden='true'>I build </span>
-              <TypeCycle phrases={phrases} />
+              <TypeCycle prefix='I ' phrases={phrases} />
             </p>
           </div>
 
@@ -32,7 +32,7 @@ export function HomePage() {
             <svg
               className='hero-arc-art'
               viewBox='0 0 680 880'
-              preserveAspectRatio='xMidYMid slice'
+              preserveAspectRatio='xMaxYMax slice'
               focusable='false'
               aria-hidden='true'
             >
@@ -49,12 +49,12 @@ export function HomePage() {
               <circle cx='680' cy='880' r='315' fill='var(--theme-tertiary)' />
               <circle cx='680' cy='880' r='175' fill='var(--theme-surface)' />
 
-              <rect
+              {/* <rect
                 x='656'
                 width='24'
                 height='880'
                 fill='var(--theme-primary)'
-              />
+              /> */}
             </svg>
 
             <div className='hero-role font-mono font-bold tracking-[0.12em] uppercase'>
