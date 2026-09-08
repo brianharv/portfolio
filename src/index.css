@@ -1,9 +1,5 @@
 @import 'tailwindcss';
 
-/*
- * Prototype theme tokens.
- * Semantic roles stay stable while palette values remain intentionally fluid.
- */
 :root {
   --theme-surface: #e7dcc9;
   --theme-foreground: #01204e;
@@ -11,6 +7,12 @@
   --theme-secondary: #653993;
   --theme-tertiary: #1db7b9;
   --theme-focus: #653993;
+
+  --hero-inline-padding: clamp(2rem, 3.2vw, 3rem);
+  --hero-art-column: clamp(21rem, 34vw, 29rem);
+  --hero-brian-size: clamp(5.4rem, 9.1vw, 8rem);
+  --hero-harvey-size: clamp(4.8rem, 8.1vw, 7.1rem);
+  --hero-statement-size: clamp(1.25rem, 1.9vw, 1.65rem);
 }
 
 @theme inline {
@@ -40,14 +42,14 @@
 
   body {
     margin: 0;
-    min-width: 320px;
+    min-width: 20rem;
     min-height: 100vh;
     background: var(--theme-surface);
   }
 
   a,
   button {
-    outline-offset: 4px;
+    outline-offset: 0.25rem;
   }
 
   :focus-visible {
@@ -60,27 +62,7 @@
   }
 }
 
-/*
- * RESPONSIVE HERO TUNING POINTS
- *
- * XL and laptop intentionally use the SAME composition. These variables are
- * the main dials to adjust if the relationship needs another pass:
- *
- *   --hero-inline-padding : outer horizontal breathing room
- *   --hero-art-column     : width reserved for the SVG
- *   --hero-art-overlap    : how far the artwork intrudes toward HARVEY
- *   --hero-brian-size     : BRIAN scale
- *   --hero-harvey-size    : HARVEY scale
- *   --hero-statement-size : "I build ..." scale
- */
 .hero-shell {
-  --hero-inline-padding: clamp(2rem, 3.2vw, 3rem);
-  --hero-art-column: clamp(21rem, 34vw, 29rem);
-  --hero-art-overlap: -4rem;
-  --hero-brian-size: clamp(5.4rem, 9.1vw, 8rem);
-  --hero-harvey-size: clamp(4.8rem, 8.1vw, 7.1rem);
-  --hero-statement-size: clamp(1.25rem, 1.9vw, 1.65rem);
-
   min-height: calc(100svh - 4rem);
   padding-inline: var(--hero-inline-padding);
 }
@@ -104,18 +86,10 @@
   z-index: 2;
 }
 
-.hero-name {
-  line-height: 0.9;
-  letter-spacing: -0.055em;
-  margin: 0;
-}
-
 .hero-name-brian {
   font-family: 'Climate Crisis', 'Space Grotesk', sans-serif;
-  font-variation-settings: 'YEAR' 1979;
   font-size: var(--hero-brian-size);
   font-weight: 400;
-  letter-spacing: -0.04em;
 }
 
 .hero-name-harvey {
@@ -128,23 +102,16 @@
 }
 
 .hero-statement {
-  margin: clamp(1.1rem, 2vh, 1.7rem) 0 0;
+  margin: clamp(2rem, 3vh, 4rem) 0 0;
   font-size: var(--hero-statement-size);
   max-width: 22ch;
 }
 
-/*
- * ARTWORK REGION
- * The negative margin is the controlled desktop/laptop overlap. The SVG and
- * role stack share this containing block, so the role always stays inside the
- * orange field as the whole composition scales.
- */
 .hero-composition {
   grid-column: 2;
   grid-row: 1 / -1;
   min-width: 0;
-  min-height: 390px;
-  margin-left: var(--hero-art-overlap);
+  min-height: 24.5rem;
   overflow: visible;
   position: relative;
   z-index: 0;
@@ -157,14 +124,9 @@
   width: 100%;
   height: 100%;
   display: block;
-  max-width: none;
+  max-width: 37.5rem;
 }
 
-/*
- * ROLE STACK
- * Sized against the artwork container (cqw), not the viewport. This is what
- * keeps Software Engineer / Recordist / Musician visually attached to orange.
- */
 .hero-role {
   position: absolute;
   top: clamp(0.45rem, 1.8cqw, 0.8rem);
@@ -199,7 +161,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.7rem;
+  gap: 0.75rem;
 }
 
 .hero-location::before {
@@ -256,18 +218,13 @@
   .hero-shell {
     --hero-inline-padding: 3rem;
     --hero-art-column: clamp(28rem, 35vw, 34rem);
-    --hero-art-overlap: -4.25rem;
-    --hero-brian-size: clamp(7rem, 10.8vw, 10.65rem);
-    --hero-harvey-size: clamp(6.25rem, 9.5vw, 9.55rem);
+    --hero-brian-size: clamp(6.5rem, 8vw, 9rem);
+    --hero-harvey-size: clamp(6.5rem, 8vw, 9rem);
     --hero-statement-size: clamp(1.4rem, 2.15vw, 2.25rem);
   }
 
   .hero-stage {
     column-gap: clamp(1.5rem, 3vw, 4rem);
-  }
-
-  .hero-name-harvey {
-    margin-left: clamp(1rem, 4.6vw, 4.75rem);
   }
 }
 
@@ -278,8 +235,7 @@
   .hero-shell {
     --hero-inline-padding: clamp(1.75rem, 2.8vw, 2.5rem);
     --hero-art-column: clamp(21rem, 34vw, 28rem);
-    --hero-art-overlap: clamp(-2.25rem, -1.7vw, -1.25rem);
-    --hero-brian-size: clamp(5.25rem, 9.1vw, 7.9rem);
+    --hero-brian-size: clamp(4.25rem, 8vw, 7rem);
     --hero-harvey-size: clamp(4.65rem, 8.05vw, 7rem);
     --hero-statement-size: clamp(1.2rem, 1.9vw, 1.65rem);
   }
@@ -287,16 +243,13 @@
   .hero-stage {
     column-gap: clamp(0.5rem, 1.4vw, 1.5rem);
   }
-
-  .hero-name-harvey {
-    margin-left: clamp(0.65rem, 3.2vw, 2.75rem);
-  }
 }
 
-/* Mobile: this is the point where the hero genuinely recomposes. */
+/*
+* MOBILE
+*/
 @media (max-width: 767px) {
   .hero-shell {
-    --hero-inline-padding: 1.25rem;
     min-height: calc(100svh - 4rem);
   }
 
@@ -309,42 +262,43 @@
 
   .hero-main {
     grid-column: 1;
-    grid-row: 1;
+    grid-row: 2;
     align-self: start;
+    margin-top: clamp(4.25rem, 10svh, 5.5rem);
   }
 
   .hero-name {
-    line-height: 0.8;
+    line-height: 0.85;
     max-width: 96%;
   }
 
   .hero-name-brian {
-    font-size: clamp(4.35rem, 19.5vw, 6.7rem);
+    font-size: clamp(2.5rem, 15vw, 5.5rem);
   }
 
   .hero-name-harvey {
     margin-left: clamp(0.5rem, 4vw, 1.75rem);
-    font-size: clamp(3.95rem, 17vw, 5.8rem);
+    font-size: clamp(2.5rem, 15vw, 5.5rem);
   }
 
   .hero-statement {
     margin-top: 1.2rem;
-    max-width: 18ch;
+    max-width: 25ch;
     font-size: clamp(1.2rem, 5vw, 1.65rem);
   }
 
   .hero-composition {
-    grid-column: 1;
-    grid-row: 2;
+    grid-column: 1/-1;
+    grid-row: 1/-1;
     overflow: hidden;
     min-height: 13rem;
     margin-left: 0;
     margin-inline: calc(var(--hero-inline-padding) * -1);
+    margin-bottom: -4rem;
   }
 
   .hero-arc-art {
-    inset: -10% -18% -8% auto;
-    width: 100vw;
+    min-width: 100vw;
     height: 125%;
   }
 
@@ -358,10 +312,16 @@
     grid-column: 1;
     grid-row: 3;
     padding-bottom: 0;
+    color: var(--theme-surface);
   }
 
   .hero-links {
     margin-bottom: 1.75rem;
+    color: var(--theme-surface);
+  }
+
+  .typing-caret {
+    font-size: clamp(1rem, 10vw, 2rem);
   }
 }
 
