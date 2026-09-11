@@ -7,6 +7,7 @@
   --theme-secondary: #653993;
   --theme-tertiary: #1db7b9;
   --theme-focus: #653993;
+  --theme-error: red;
 
   --hero-inline-padding: clamp(2rem, 3.2vw, 3rem);
   --hero-art-column: clamp(21rem, 34vw, 29rem);
@@ -22,6 +23,7 @@
   --color-secondary: var(--theme-secondary);
   --color-tertiary: var(--theme-tertiary);
   --color-focus: var(--theme-focus);
+  --color-error: var(--theme-error);
 
   --font-sans: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
   --font-mono: 'Space Mono', ui-monospace, SFMono-Regular, monospace;
@@ -173,6 +175,16 @@
   background: currentColor;
   opacity: 0.6;
 }
+
+/* .work-line::after {
+  content: '';
+  display: flex;
+  width: inherit;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.6;
+  margin-top: 0.5rem;
+} */
 
 .link-accent {
   text-decoration-thickness: 2px;
