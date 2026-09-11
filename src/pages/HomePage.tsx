@@ -254,7 +254,7 @@ export function HomePage() {
                 name='email'
                 type='email'
                 autoComplete='email'
-                className='rounded-sm border-2 p-2'
+                className='rounded-sm border-2 border-foreground bg-surface p-2 text-foreground outline-offset-4'
                 placeholder='email@address.com'
                 required
               />
@@ -268,7 +268,7 @@ export function HomePage() {
               <textarea
                 id='message-field'
                 name='message'
-                className='resize-none rounded-sm border-2 p-2'
+                className='resize-none rounded-sm border-2 border-foreground bg-surface p-2 text-foreground outline-offset-4'
                 placeholder='How can I help?'
                 rows={8}
                 required
@@ -279,7 +279,7 @@ export function HomePage() {
             <button
               type='submit'
               disabled={formStatus === 'submitting'}
-              className='w-[10rem] rounded-sm bg-secondary p-2 text-surface transition-opacity disabled:cursor-not-allowed disabled:opacity-60 md:w-[18rem]'
+              className='w-[10rem] rounded-sm border-2 border-secondary bg-secondary p-2 text-surface transition-colors transition-shadow shadow-[0.5rem_0.5rem_var(--color-tertiary)] hover:bg-primary hover:text-foreground hover:shadow-[0.0rem_0.0rem_var(--color-tertiary)] disabled:cursor-not-allowed disabled:opacity-60 md:w-[18rem]'
             >
               {formStatus === 'submitting' ? 'Sending…' : 'Send message'}
             </button>
