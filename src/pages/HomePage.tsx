@@ -85,7 +85,10 @@ export function HomePage() {
 
   return (
     <main>
-      <section className='hero-shell mx-auto xl:max-w-[82rem] 2xl:max-w-[95rem] overflow-hidden pb-8 sm:pb-0 sm:pt-0 lg:pb-12 lg:pt-10'>
+      <section
+        id='root'
+        className='hero-shell mx-auto xl:max-w-[82rem] 2xl:max-w-[95rem] overflow-hidden pb-8 sm:pb-0 sm:pt-0 lg:pb-12 lg:pt-10'
+      >
         <div className='hero-stage'>
           <div className='hero-main'>
             <h1 className='hero-name m-0 flex flex-col uppercase leading-[0.9]'>
@@ -136,6 +139,7 @@ export function HomePage() {
       </section>
 
       <section
+        id='work'
         className='min-h-[42svh] border-t-[3px] border-foreground bg-foreground text-surface'
         aria-labelledby='work-heading'
       >
@@ -209,6 +213,7 @@ export function HomePage() {
       </section>
 
       <section
+        id='contact'
         className='hero-shell border-t-[3px] border-background bg-background text-foreground'
         aria-labelledby='contact-heading'
       >

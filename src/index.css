@@ -176,16 +176,6 @@
   opacity: 0.6;
 }
 
-/* .work-line::after {
-  content: '';
-  display: flex;
-  width: inherit;
-  height: 1px;
-  background: currentColor;
-  opacity: 0.6;
-  margin-top: 0.5rem;
-} */
-
 .link-accent {
   text-decoration-thickness: 2px;
 }
