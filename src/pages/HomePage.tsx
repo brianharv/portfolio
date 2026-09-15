@@ -259,7 +259,7 @@ export function HomePage() {
                 name='email'
                 type='email'
                 autoComplete='email'
-                className='rounded-sm border-2 border-foreground bg-surface p-2 text-foreground outline-offset-4'
+                className='rounded-sm border-2 border-foreground bg-surface p-2 text-foreground outline-offset-1'
                 placeholder='email@address.com'
                 required
               />
@@ -273,7 +273,7 @@ export function HomePage() {
               <textarea
                 id='message-field'
                 name='message'
-                className='resize-none rounded-sm border-2 border-foreground bg-surface p-2 text-foreground outline-offset-4'
+                className='resize-none rounded-sm border-2 border-foreground bg-surface p-2 text-foreground outline-offset-1'
                 placeholder='How can I help?'
                 rows={8}
                 required
